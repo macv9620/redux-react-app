@@ -2,14 +2,20 @@ import { Box } from '@mui/material'
 import './App.css'
 import { CardList } from './components/CardList'
 import { Searcher } from './components/Searcher'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { getItems } from './api/getItems'
+import { useDispatch, useSelector } from 'react-redux'
+import { setItemsAction } from './redux/actions/actions'
 
 function App () {
-  const [items, setItems] = useState([])
+  // const [items, setItems] = useState([])
+
+  const items = useSelector(state => state.items)
+  const dispatch = useDispatch()
+
   useEffect(() => {
     getItems()
-      .then(res => setItems(res.data.results))
+      .then(res => dispatch(setItemsAction(res.data.results)))
       .catch(e => console.log(e))
   }, [])
   return (

@@ -12,8 +12,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import { Box } from '@mui/material'
 
-const ItemCard = ({ image, name }) => {
-  console.log(image)
+const ItemCard = ({ name }) => {
   return (
     <Card sx={{ width: 345 }}>
       <CardHeader
@@ -33,8 +32,7 @@ const ItemCard = ({ image, name }) => {
       <CardMedia
         component='img'
         height='194'
-        image={image}
-        alt='Paella dish'
+        alt='error'
       />
       <CardContent>
         <Typography variant='body2' color='text.secondary'>
