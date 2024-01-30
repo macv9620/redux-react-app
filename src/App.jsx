@@ -5,19 +5,28 @@ import { Searcher } from './components/Searcher'
 import { useEffect } from 'react'
 import { getItems } from './api/getItems'
 import { useDispatch, useSelector } from 'react-redux'
-import { setItemsAction } from './redux/actions/actions'
+import { getPokeWithDetails, setItemsAction } from './redux/actions/actions'
+import { getPokeInfo } from './api/getPokeInfo'
 
 function App () {
-  // const [items, setItems] = useState([])
-
-  const items = useSelector(state => state.items)
+  const items = useSelector((state) => state.items)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    getItems()
-      .then(res => dispatch(setItemsAction(res.data.results)))
-      .catch(e => console.log(e))
+    const fetchData = async () => {
+      try {
+        const res = await getItems()
+        const pokes = res.data.results
+
+        dispatch(getPokeWithDetails(pokes))
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    fetchData()
   }, [])
+
   return (
     <div>
       <Searcher />

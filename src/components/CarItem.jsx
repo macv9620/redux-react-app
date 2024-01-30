@@ -12,7 +12,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import { Box } from '@mui/material'
 
-const ItemCard = ({ name }) => {
+const ItemCard = ({ name, image, abilities }) => {
   return (
     <Card sx={{ width: 345 }}>
       <CardHeader
@@ -33,12 +33,11 @@ const ItemCard = ({ name }) => {
         component='img'
         height='194'
         alt='error'
+        src={image}
       />
       <CardContent>
         <Typography variant='body2' color='text.secondary'>
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the mussels,
-          if you like.
+          Abilities: {abilities}
         </Typography>
       </CardContent>
       <Box sx={{ display: 'flex', justifyContent: 'center', backgroundColor: 'white' }}>
