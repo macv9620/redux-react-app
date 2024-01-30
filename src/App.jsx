@@ -7,6 +7,7 @@ import { getItems } from './api/getItems'
 import { useDispatch, useSelector } from 'react-redux'
 import { getPokeWithDetails, setItemsAction } from './redux/actions/actions'
 import { getPokeInfo } from './api/getPokeInfo'
+import { Loader } from './components/Loader'
 
 function App () {
   const items = useSelector((state) => state.items)
@@ -30,6 +31,7 @@ function App () {
   return (
     <div>
       <Searcher />
+      <Loader />
       <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 2, marginTop: 2 }}>
         <CardList items={items} />
       </Box>
