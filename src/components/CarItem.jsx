@@ -11,8 +11,14 @@ import { red } from '@mui/material/colors'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import { Box } from '@mui/material'
+import { useDispatch } from 'react-redux'
+import { setLikeUnlike } from '../redux/actions/actions'
 
-const ItemCard = ({ name, image, abilities }) => {
+const ItemCard = ({ name, image, abilities, like, id }) => {
+  const dispatch = useDispatch()
+  const likeUnlikePoke = (id) => {
+    dispatch(setLikeUnlike(id))
+  }
   return (
     <Card sx={{ width: 345 }}>
       <CardHeader
@@ -42,8 +48,8 @@ const ItemCard = ({ name, image, abilities }) => {
       </CardContent>
       <Box sx={{ display: 'flex', justifyContent: 'center', backgroundColor: 'white' }}>
         <CardActions disableSpacing>
-          <IconButton aria-label='add to favorites'>
-            <FavoriteIcon />
+          <IconButton aria-label='add to favorites' onClick={()=> likeUnlikePoke(id)}>
+            <FavoriteIcon color={like ? 'success' : ''} />
           </IconButton>
         </CardActions>
       </Box>
