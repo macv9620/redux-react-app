@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import { itemsReducer } from './itemsReducer'
-import { uiReducer } from './ui'
+import { dataSliceReducer } from '../../slices/dataSlice'
+import { uiSliceReducer } from '../../slices/uiSlice'
 
 const rootReducer = combineReducers({
-  data: itemsReducer,
-  ui: uiReducer
+  data: dataSliceReducer,
+  ui: uiSliceReducer
 })
 
 export { rootReducer }

@@ -3,31 +3,19 @@ import './App.css'
 import { CardList } from './components/CardList'
 import { Searcher } from './components/Searcher'
 import { useEffect } from 'react'
-import { getItems } from './api/getItems'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
-import { getPokeWithDetails, setShowLoader } from './redux/actions/actions'
 import { Loader } from './components/Loader'
+import { fetchItemsWithDetails } from './slices/dataSlice'
 
 function App () {
   const { items } = useSelector((state) => state.data, shallowEqual)
+  console.log(items)
   const { showLoader } = useSelector((state) => state.ui)
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(setShowLoader(true))
-    const fetchData = async () => {
-      try {
-        const res = await getItems()
-        const pokes = res.data.results
-
-        dispatch(getPokeWithDetails(pokes))
-      } catch (error) {
-        console.error(error)
-      }
-    }
-
-    fetchData()
+    dispatch(fetchItemsWithDetails())
   }, [])
 
   return (

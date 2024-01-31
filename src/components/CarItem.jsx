@@ -12,7 +12,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import { Box } from '@mui/material'
 import { useDispatch } from 'react-redux'
-import { setLikeUnlike } from '../redux/actions/actions'
+import { setLikeUnlike } from '../slices/dataSlice'
 
 const ItemCard = ({ name, image, abilities, like, id }) => {
   const dispatch = useDispatch()
